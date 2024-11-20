@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Koleksi Bunga SMA NEGERI 4 PALEMBANG</title>                                                               
+    <style>
+        /* Styling dasar */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            background-image: url("https://www.transparenttextures.com/patterns/cream-paper.png");
+            background-size: cover;
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            background: linear-gradient(to right, #FF69B4, #BA55D3);
+            -webkit-background-clip: text;
+            color: transparent;
+            font-size: 2em;
+            margin-bottom: 40px;
+        }
+        .gallery {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+        .flower-card {
+            width: 200px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        .flower-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+        }
+        .flower-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s;
+        }
+        .flower-card:hover img {
+            transform: scale(1.1);
+        }
+        .flower-info {
+            margin-top: 10px;
+        }
+        .flower-info h3 {
+            font-size: 18px;
+            margin: 5px 0;
+            color: #444;
+        }
+        .flower-info p {
+            font-size: 14px;
+            color: #666;
+        }
+        .barcode-link {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 5px 10px;
+            background-color: #007bff;
+            color: white;
+            border-radius: 4px;
+            text-decoration: none;
+            font-size: 14px;
+            transition: background-color 0.3s;
+        }
+        .barcode-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>"TANAMAN TANAMAN SMA NEGERI 4 PALEMBANG"</h1>
+    <div class="gallery" id="gallery"></div>
+
+    <script>
+        // Data bunga berupa array, setiap objek memiliki 'nama', 'gambar', 'deskripsi', dan 'barcodeLink'
+        const flowers = [
+        {
+        nama: "Bayam",
+        gambar:"https://akcdn.detik.net.id/community/media/visual/2022/05/10/ilustrasi-bayamfoto-pexelsyaroslav-shuraev.jpeg?w=620&q=90",
+        deskripsi: "Sayur bayam adalah salah satu jenis sayuran yang sering kali dijadikan sebagai bahan makanan dalam berbagai hidangan. Tidak hanya enak dan lezat, sayur bayam juga memiliki banyak manfaat bagi kesehatan tubuh.",
+        barcodeLink: "https://get-qr.com/3Crrr1",
+    },
+    {
+        nama: "Cabee",
+        gambar:"https://cdn1-production-images-kly.akamaized.net/-dgUhz03RP_FVHgh7jzf_HnPJ1Y=/1280x720/smart/filters:quality(75):strip_icc():format(webp)/kly-media-production/medias/2704360/original/048545000_1547537154-eat-3911018_1920.jpg",
+        deskripsi: "Morfologi Tanaman Cabai (Capsicum annum L .), merupakan tumbuhan dari ordo solanales dan dan famili solanaceae. Cabai merupakan buah yang memiliki rasa pedas dan begitu populer di kalangan masyarakat Asia Tenggara. Buah ini dapat digolongkan sebagai sayur maupun bumbu, tergantung ingin digunakan sebagai apa.",
+        barcodeLink: "https://get-qr.com/wFbv1B",
+    },
+    {
+        nama: "Teratai",
+        gambar:"https://blog.floweradvisor.co.id/wp-content/uploads/2021/07/Bunga-Teratai.jpeg",
+        deskripsi: "Teratai adalah sejenis tanaman air yang berasal dari suku Nymphaeaceae. Tanaman ini tumbuh diatas air yang tenang seperti kolam, rawa atau sungai. Bunga dan daun berada di atas permukaan laut dan tangkainya keluar dari rhizoma yang ada di dalam lumpur. Tangkai terletak di bagian tengah daun bagian bawah, daunnya memiliki bentuk oval atau bundar dengan ukuran lebar yang terpotong pada bagian jari-jari menuju tangkai. ",
+        barcodeLink: "https://get-qr.com/U4mBYZ",
+    },
+    {
+        nama: "Bougenville",
+        gambar:"https://www.bonsaiempire.id/images/carrousel/bougainvillea02-foliage.jpg",
+        deskripsi: "Bunga Kertas atau Bunga Bougenville atau Bugenvil (Bougainvillea) adalah salah satu tanaman bunga hias yang termasuk dalam famili Nyctaginaceae. Tanaman bunga ini berasal dari Amerika Selatan. Tanaman bunga ini memiliki bentuk pohon yang kecil dan susah untuk tumbuh tegak. ",
+        barcodeLink: "https://get-qr.com/XLTM-h",
+    },
+    {
+        nama: "Kaktus",
+        gambar:"https://media.istockphoto.com/id/1411935337/id/foto/tanaman-pot-kaktus-dalam-ruangan-yang-indah-dari-echinocactus-grusonii-atau-kroenleinia.jpg?s=1024x1024&w=is&k=20&c=VaEyzWoCo5TncX81YSUGTlbfRge4TJyGO_ePFSRCg-Q=",
+        deskripsi: "Kaktus, tanaman eksotis yang unik dan menarik, telah menjadi populer dalam dunia hortikultura. Dikenal dengan bentuknya yang tidak biasa dan kemampuannya untuk bertahan hidup di lingkungan yang keras, kaktus telah menjadi salah satu tanaman yang paling dicari oleh pecinta tanaman di seluruh dunia.",
+        barcodeLink: "https://get-qr.com/Q58OSy",
+    },
+    {
+        nama: "Sawo",
+        gambar:"https://gdm.id/wp-content/uploads/2023/02/sawo4-1.jpg",
+        deskripsi: "Sawo Manila (Manilkara zapota) adalah jenis pohon buah yang berasal dari famili Sapotaceae yang memiliki umur panjang. Sawo memiliki banyak nama di Indonesia disebut dengan sawo, di Malaysia disebut ciku dan lain sebagainya.",
+        barcodeLink: "https://get-qr.com/7HhJC8",
+    },
+    {
+        nama: "Jambu Air",
+        gambar:"https://asset.kompas.com/crops/uWJSLxQKYUOt6AV_7O4V_XYFfDQ=/301x163:1920x1243/750x500/data/photo/2022/06/11/62a444b0d9aea.jpg",
+        deskripsi: "Jambu air merupakan salah satu jenis buah tropis yang populer di Indonesia. Buah yang memiliki nama latin Syzygium aqueum ini memiliki bentuk yang bulat dan berwarna merah muda. Jambu air memiliki rasa yang segar dan manis dengan sedikit keasaman, membuatnya menjadi buah favorit bagi banyak orang.",
+        barcodeLink: "https://get-qr.com/M3kXhL",
+    },
+    {
+        nama: "Lidah Mertua",
+        gambar:"https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjAotPoGgV4q31lu7Y88WxVAvkkZ6cBLr3A13P2gFwbJFbUvgkmJe_4J3hPt4oHEjoB-oIRI64RlKFzRkO95137YVxewFMEi3XFwW7L5v2zZVnGVqrlsg81lpsyppi8yV7XbKOOLwJ7DjGbBLXBvmhRFkQRHhJwD6V-aOyvJROLlDhT7IgAknTq7CQNlHCc/w640-h360/lidah-mertua-Laurentii.jpg",
+        deskripsi: "Lidah Mertua merupakan salah satu jenis tanaman yang cukup terkenal dan jadi primadona di kalangan pecinta botani. Tanaman tropis yang juga dikenal sebagai tanaman rimpang ini mendapatkan julukan ‘lidah mertua’ berawal dari kalangan pedagang tanaman hias berbasis internasional.",
+        barcodeLink: "https://get-qr.com/5YIezj",
+    },
+    {
+        nama: "Pucuk Merah",
+        gambar:"https://fataya.co.id/wp-content/uploads/2024/02/pucuk-merah-9.jpeg",
+        deskripsi: "Pucuk Merah adalah sejenis tanaman hias yang memiliki ciri khas pada tunas daunnya yang baru tumbuh berwarna merah menyala. Tanaman ini dikenal dengan nama Syzygium paniculatum atau Lilly Pilly. Pucuk Merah memiliki daun tunggal berbentuk oval dengan tangkai yang sangat pendek.",
+        barcodeLink: "https://get-qr.com/900TEg",
+    },
+    {
+        nama: "Palem Kuning",
+        gambar:"https://thegorbalsla.com/wp-content/uploads/2020/02/Palem-Kuning.jpeg",
+        deskripsi: "Pohon Palem kuning atau biasa disebut pinang kuning ini berasal dari Madagaskar dan sangat mudah ditemukan disekitar kita, karena tanaman ini juga termasuk tanaman palem yang sering digunakan sebagai tanaman hias di berbagai tempat.",
+        barcodeLink: "https://get-qr.com/7m8GwP",
+    },
+    {
+        nama: "Lidah Buaya",
+        gambar:"https://asset.kompas.com/crops/8sF63cg2u_zzfUj4erLSa2OVUcg=/100x67:900x600/750x500/data/photo/2023/03/21/6419c605ae545.jpg",
+        deskripsi: "Lidah buaya adalah tanaman serba guna yang sudah dikenal khasiatnya sejak berabad-abad lalu. Lidah buaya atau sering disebut dengan aloe vera, menghasilkan dua bahan, yaitu gel dan getah, yang biasanya digunakan dalam obat­-obatan.",
+        barcodeLink: "https://get-qr.com/9a1B9P",
+    },
+    {
+        nama: "Jahe",
+        gambar:"https://t-2.tstatic.net/jateng/foto/bank/images/jahe-1972021.jpg",
+        deskripsi: "Jahe adalah salah satu tanaman herbal yang memiliki banyak manfaat bagi kesehatan manusia. Tanaman ini memiliki nama latin Zingiber officinale dan termasuk dalam keluarga Zingiberaceae. Jahe telah digunakan sejak zaman dahulu sebagai bumbu dapur dan juga sebagai obat tradisional. Selain itu, jahe juga memiliki aroma yang khas dan rasa yang pedas, sehingga sering digunakan sebagai tambahan pada makanan dan minuman.",
+        barcodeLink: "https://get-qr.com/nCnWCN",
+    },
+    {
+        nama: "Aglonema",
+        gambar:"https://www.cleanipedia.com/images/5h1w0177knh8/ZSxqnAaznoMpxb7jPtYNR/4ea02ddf210f1a6dfe4623029332491a/MDguX0NsZWFuaXBlZGlhX01laV8yMDIyX0hlYWRlci5qcGc/600w/dua-tanaman-hias-aglaonema-dengan-daun-berwarna-warni-dalam-pot-putih..avif",
+        deskripsi: "Aglaonema adalah tanaman hias daun yang berasal dari suku talas-talasan (Araceae). Tanaman ini memiliki akar serabut dengan batang tanpa kambium. Ukuran daun aglaonema termasuk besar, dengan bentuk menyirip dan tersusun dari pembuluh pengangkut yang acak. ",
+        barcodeLink: "https://get-qr.com/TTEEGM",
+    },
+    {
+        nama: "Kelapa",
+        gambar:"https://asset.kompas.com/crops/ssek4e8fOQaKCs1NU_t2CtWrOXs=/192x208:1728x1232/750x500/data/photo/2022/12/23/63a5760ef2db7.jpg",
+        deskripsi: "Kelapa (Cocos nucifera L.) termasuk dalam genus Cocos dan dapat tumbuh dengan mudah di daerah tropis. Tanaman kelapa banyak ditemukan di daerah pantai karena memerlukan kelembaban yang tinggi. Buah kelapa berbentuk bulat panjang dengan ukuran kurang lebih sebesar kepala manusia. Komposisi buah kelapa terdiri dari sabut 33 persen, tempurung 12 persen, daging buah 28 persen dan air 25 persen.",
+        barcodeLink: "https://get-qr.com/tFbUJY",
+    },
+    {
+        nama: "Belimbing",
+        gambar:"https://i.ytimg.com/vi/8a-YChrGtvk/maxresdefault.jpg",
+        deskripsi: "Belimbing (Averrhoa carambola atau dalam bahasa inggris disebut Star fruit) adalah salah satu tumbuhan buah yang memiliki bentuk khas. Tanaman ini berasal dari Sri Langka, India dan Indonesia. Namun kini penyebarannya sudah sangat luas yaitu hampir di seluruh penjuru dunia. Belimbing adalah salah satu tanaman buah tropis, pohon buah belimbing memiliki ketinggian sekitar 5 meter dengan banyak cabang. ",
+        barcodeLink: "https://get-qr.com/J-4Jqu",
+    },
+    {
+        nama: "Mangga",
+        gambar:"https://thegorbalsla.com/wp-content/uploads/2020/02/Batang-7-700x467.jpg",
+        deskripsi: "Mangga( Mangifera indica) atau mempelam adalah nama sejenis buah dan sekaligus nama pohon yang termasuk ke dalam marga Mangifera dan suku Anacardiaceae yang memiliki sekitar 35-40 anggota. Tanaman dan buah mangga Berasal dari sekitar perbatasan India dengan Burma.",
+        barcodeLink: "https://get-qr.com/9nA7B-",
+    },
+    {
+        nama: "Alamanda",
+        gambar:"https://thegorbalsla.com/wp-content/uploads/2020/01/Alamanda-Kuning-1-700x525.jpg",
+        deskripsi: "Bunga Alamanda (Alamanda cathartica) adalah salah satu tumbuhan hias yang populer di berbagai belahan dunia, termasuk Indonesia. Tanaman ini dikenal dengan bunganya yang cantik dan beragam warna, seperti kuning, oranye, dan merah muda.",
+        barcodeLink: "https://get-qr.com/xGsU1E",
+    },
+
+        ];
+
+        // Fungsi untuk menampilkan bunga dalam HTML
+        const gallery = document.getElementById("gallery");
+
+        flowers.forEach(flower => {
+            // Buat elemen div untuk setiap bunga
+            const flowerCard = document.createElement("div");
+            flowerCard.classList.add("flower-card");
+
+            // Tambahkan gambar bunga
+            const img = document.createElement("img");
+            img.src = flower.gambar;
+            img.alt = flower.nama;
+            flowerCard.appendChild(img);
+
+            // Tambahkan informasi bunga
+            const flowerInfo = document.createElement("div");
+            flowerInfo.classList.add("flower-info");
+            
+            const title = document.createElement("h3");
+            title.innerText = flower.nama;
+            flowerInfo.appendChild(title);
+
+            const description = document.createElement("p");
+            description.innerText = flower.deskripsi;
+            flowerInfo.appendChild(description);
+
+            flowerCard.appendChild(flowerInfo);
+
+            // Tambahkan link barcode
+            const barcodeLink = document.createElement("a");
+            barcodeLink.href = flower.barcodeLink;
+            barcodeLink.classList.add("barcode-link");
+            barcodeLink.innerText = "Lihat Selengkap Nya";
+            barcodeLink.target = "_blank";
+            flowerCard.appendChild(barcodeLink);
+
+            // Masukkan card bunga ke dalam gallery
+            gallery.appendChild(flowerCard);
+        });
+    </script>
+</body>
+</html>
